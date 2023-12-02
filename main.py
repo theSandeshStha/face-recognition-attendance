@@ -8,7 +8,6 @@ import os
 from student import Student
 from train import Train
 from face_recognition import Face_Recognition
-import pandas as pd
 
 class Face_Recognition_System:
     def __init__(self, root):
