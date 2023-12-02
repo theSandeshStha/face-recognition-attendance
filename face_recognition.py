@@ -7,6 +7,8 @@ from tkinter import messagebox
 import mysql.connector
 import cv2
 import numpy as np
+from time import strftime
+from datetime import datetime
 
 
 
@@ -39,6 +41,25 @@ class Face_Recognition:
 
 
 
+
+    # ===================== Attendance =====================
+
+    def mark_attendance(self, i, r, n, d):
+        with open("attendance.csv", "r+", newline = "\n") as f:
+            myDataList = f.readlines()
+            name_list = []
+            for line in myDataList:
+                entry = line.split((","))
+                name_list.append(entry[0])
+            
+            if ((i not in name_list) and (r not in name_list) and (n not in name_list) and (d not in name_list)):
+                now = datetime.now()
+                d1 = now.strftime("%d/%m/%Y")
+                dtString = now.strftime("%H:%M:%S")
+                f.writelines(f"\n{i},{r},{n},{d},{dtString},{d1}, Present")
+
+
+
     # ===================== Face Recognition ====================
     def face_recog(self):
         def draw_boundary(img, classifier, scaleFactor, minNeighbour, color, text, clf):
@@ -65,12 +86,18 @@ class Face_Recognition:
 
                 my_cursor.execute("select Dep from student where Student_id = " + str(id)) 
                 d = my_cursor.fetchone()
-                d = "+".join(d)             
+                d = "+".join(d) 
+
+                my_cursor.execute("select Student_id from student where Student_id = " + str(id)) 
+                i = my_cursor.fetchone()
+                i = "+".join(i)                     
 
                 if confidence > 77:
+                    cv2.putText(img, f"ID: {i}", (x, y-75), cv2.FONT_HERSHEY_COMPLEX, 0.8, (255, 255, 255), 3)
                     cv2.putText(img, f"Roll: {r}", (x, y-55), cv2.FONT_HERSHEY_COMPLEX, 0.8, (255, 255, 255), 3)
                     cv2.putText(img, f"Name: {n}", (x, y-30), cv2.FONT_HERSHEY_COMPLEX, 0.8, (255, 255, 255), 3)
                     cv2.putText(img, f"Department: {d}", (x, y-5), cv2.FONT_HERSHEY_COMPLEX, 0.8, (255, 255, 255), 3)
+                    self.mark_attendance(i, r, n, d)
 
                 else:
                     cv2.rectangle(img(x,y), (x+w, y+h), (0, 0, 255), 3)
