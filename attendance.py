@@ -14,21 +14,21 @@ class Attendance:
         self.root.title("Attendance Details")
 
 
-        #  # First Image
-        # img = Image.open(os.path.expanduser("~/Desktop/project/Attendance/Images/college_logo.png"))
-        # img = img.resize((800,200), Image.ANTIALIAS)
-        # self.photoimg = ImageTk.PhotoImage(img)
+         # First Image
+        img = Image.open(os.path.expanduser("~/Desktop/project/Attendance/Images/college_logo.png"))
+        img = img.resize((800,200), Image.ANTIALIAS)
+        self.photoimg = ImageTk.PhotoImage(img)
 
-        # f_lbl = Label(self.root, image = self.photoimg)
-        # f_lbl.place(x = 0, y = 0, width = 800, height = 200)
+        f_lbl = Label(self.root, image = self.photoimg)
+        f_lbl.place(x = 0, y = 0, width = 800, height = 200)
 
-        # #Second Image
-        # img1 = Image.open(os.path.expanduser("~/Desktop/project/Attendance/Images/college_logo.png"))
-        # img1 = img1.resize((800,200), Image.ANTIALIAS)
-        # self.photoimg1 = ImageTk.PhotoImage(img1)
+        #Second Image
+        img1 = Image.open(os.path.expanduser("~/Desktop/project/Attendance/Images/college_logo.png"))
+        img1 = img1.resize((800,200), Image.ANTIALIAS)
+        self.photoimg1 = ImageTk.PhotoImage(img1)
 
-        # f_lbl = Label(self.root, image = self.photoimg1)
-        # f_lbl.place(x = 800, y = 0, width = 800, height = 200)
+        f_lbl = Label(self.root, image = self.photoimg1)
+        f_lbl.place(x = 800, y = 0, width = 800, height = 200)
 
         title_lbl = Label(self.root, text = "Student Management", font = ("Montserrat", 35, "bold"), bg = "white", fg="black")
         title_lbl.place(x = 0, y = 201, width = 1530, height = 45)
@@ -42,12 +42,12 @@ class Attendance:
         Left_frame = LabelFrame(main_frame, bd = 2, relief = RIDGE, text = "Attendance Details", font = ("Montserrat", 12, "bold"))
         Left_frame.place(x = 10, y = 10, width = 760, height = 580)
 
-        # img_left = Image.open(os.path.expanduser("~/Desktop/project/Attendance/Images/college_logo.png"))
-        # img_left = img_left.resize((720,130), Image.ANTIALIAS)
-        # self.photoimg_left = ImageTk.PhotoImage(img_left)
+        img_left = Image.open(os.path.expanduser("~/Desktop/project/Attendance/Images/college_logo.png"))
+        img_left = img_left.resize((720,130), Image.ANTIALIAS)
+        self.photoimg_left = ImageTk.PhotoImage(img_left)
 
-        # f_lbl = Label(Left_frame, image = self.photoimg_left)
-        # f_lbl.place(x = 5, y = 0, width = 720, height = 130)
+        f_lbl = Label(Left_frame, image = self.photoimg_left)
+        f_lbl.place(x = 5, y = 0, width = 720, height = 130)
 
         # Right division
         Right_frame = LabelFrame(main_frame, bd = 2, relief = RIDGE, text = "Attendance Details", font = ("Montserrat", 12, "bold"))
