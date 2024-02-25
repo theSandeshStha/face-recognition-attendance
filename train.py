@@ -30,12 +30,12 @@ class Train:
         b1_1 = Button(self.root, command = self.train_classifier, text = "Train Data", cursor = "hand2", font = ("Montserrat", 15, "bold"))
         b1_1.place(x = 0, y = 380, width = 1530, height = 60)
 
-        # img_bottom = Image.open(os.path.expanduser("~/Desktop/project/Attendance/Images/college_logo.png"))
-        # img_bottom = img_bottom.resize((1530, 325), Image.ANTIALIAS)
-        # self.photoimg_bottom = ImageTk.PhotoImage(img_bottom)
+        img_bottom = Image.open(os.path.expanduser("~/Desktop/project/Attendance/Images/college_logo.png"))
+        img_bottom = img_bottom.resize((1530, 325), Image.ANTIALIAS)
+        self.photoimg_bottom = ImageTk.PhotoImage(img_bottom)
 
-        # f_lbl = Label(self.root, image = self.photoimg_bottom)
-        # f_lbl.place(x = 0, y = 440, width = 1530, height = 325)
+        f_lbl = Label(self.root, image = self.photoimg_bottom)
+        f_lbl.place(x = 0, y = 440, width = 1530, height = 325)
 
     def train_classifier(self):
         data_dir = ("data")
@@ -63,7 +63,7 @@ class Train:
         clf.train(faces, ids)
         clf.write("classifier.xml")
         cv2.destroyAllWindows()
-        messagebox.showinfo("Result", "Training Datasets Complete!")
+        messagebox.showinfo("Result", "Training Datasets Complete!", parent = self.root)
 
 
 

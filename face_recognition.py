@@ -22,14 +22,14 @@ class Face_Recognition:
         title_lbl.place(x = 0, y = 0, width = 1530, height = 45)
 
         img_top = Image.open(os.path.expanduser("~/Desktop/project/Attendance/Images/college_logo.png"))
-        img_top = img_top.resize((650, 700), Image.ANTIALIAS)
+        img_top = img_top.resize((650, 700), Image.Resampling.LANCZOS)
         self.photoimg_top = ImageTk.PhotoImage(img_top)
 
         f_lbl = Label(self.root, image = self.photoimg_top)
         f_lbl.place(x = 0, y = 55, width = 650, height = 700)
 
         img_bottom = Image.open(os.path.expanduser("~/Desktop/project/Attendance/Images/college_logo.png"))
-        img_bottom = img_bottom.resize((950, 700), Image.ANTIALIAS)
+        img_bottom = img_bottom.resize((950, 700), Image.Resampling.LANCZOS) # changed from img_bottom = img_bottom.resize((950, 700), Image.ANTIALIAS)
         self.photoimg_bottom = ImageTk.PhotoImage(img_bottom)
 
         f_lbl = Label(self.root, image = self.photoimg_bottom)
@@ -63,8 +63,11 @@ class Face_Recognition:
     # ===================== Face Recognition ====================
     def face_recog(self):
         def draw_boundary(img, classifier, scaleFactor, minNeighbour, color, text, clf):
+            # cap = cv2.VideoCapture(0)
+            # _, img = cap.read()
+
             gray_image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-            features = classifier.detectMultiscale(gray_image, scaleFactor, minNeighbour)
+            features = classifier.detectMultiScale(gray_image, scaleFactor, minNeighbour)
 
             coord = []
 
@@ -100,7 +103,7 @@ class Face_Recognition:
                     self.mark_attendance(i, r, n, d)
 
                 else:
-                    cv2.rectangle(img(x,y), (x+w, y+h), (0, 0, 255), 3)
+                    cv2.rectangle(img, (x,y), (x+w, y+h), (0, 0, 255), 3)
                     cv2.putText(img, "Unknown Face", (x, y-5), cv2.FONT_HERSHEY_COMPLEX, 0.8, (255, 255, 255), 3)
 
                 coord = [x, y, w, h]
@@ -124,8 +127,8 @@ class Face_Recognition:
 
             if cv2.waitKey(1) == 13:
                 break
-            video_cap.release()
-            cv2.destroyAllWindows()
+        video_cap.release()
+        cv2.destroyAllWindows()
 
 
 
