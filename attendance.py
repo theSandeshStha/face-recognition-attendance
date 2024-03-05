@@ -139,7 +139,7 @@ class Attendance:
         delete_btn = Button(btn_frame, text = "Update", width = 15, font = ("Montserrat", 12, "bold"))
         delete_btn.grid( row = 0, column = 2 )
 
-        reset_btn = Button(btn_frame, text = "Reset", width = 15, font = ("Montserrat", 12, "bold"))
+        reset_btn = Button(btn_frame, text = "Reset", command = self.reset_data, width = 15, font = ("Montserrat", 12, "bold"))
         reset_btn.grid( row = 0, column = 3 )
 
 
@@ -232,6 +232,16 @@ class Attendance:
         self.var_attend_date.set(rows[5])
         self.var_attend_attendance.set(rows[6])
 
+    
+
+    def reset_data(self):
+        self.var_attend_id.set("")
+        self.var_attend_roll.set("")
+        self.var_attend_name.set("")
+        self.var_attend_dep.set("")
+        self.var_attend_time.set("")
+        self.var_attend_date.set("")
+        self.var_attend_attendance.set("")
 
 
 if __name__ == "__main__":

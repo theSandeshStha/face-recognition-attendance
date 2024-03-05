@@ -9,6 +9,7 @@ from student import Student
 from train import Train
 from face_recognition import Face_Recognition
 from attendance import Attendance
+from mail import Mail
 
 class Face_Recognition_System:
     def __init__(self, root):
@@ -18,7 +19,7 @@ class Face_Recognition_System:
 
         # First Image
         img = Image.open(os.path.expanduser("~/Desktop/project/Attendance/Images/college_logo.png"))
-        img = img.resize((500,100), Image.ANTIALIAS)
+        img = img.resize((500,100), Image.Resampling.LANCZOS)
         self.photoimg = ImageTk.PhotoImage(img)
 
         f_lbl = Label(self.root, image = self.photoimg)
@@ -26,7 +27,7 @@ class Face_Recognition_System:
 
         #Second Image
         img1 = Image.open(os.path.expanduser("~/Desktop/project/Attendance/Images/college_logo.png"))
-        img1 = img1.resize((500,100), Image.ANTIALIAS)
+        img1 = img1.resize((500,100), Image.Resampling.LANCZOS)
         self.photoimg1 = ImageTk.PhotoImage(img1)
 
         f_lbl = Label(self.root, image = self.photoimg1)
@@ -34,7 +35,7 @@ class Face_Recognition_System:
         
         #Third Image
         img2 = Image.open(os.path.expanduser("~/Desktop/project/Attendance/Images/college_logo.png"))
-        img2 = img2.resize((500,100), Image.ANTIALIAS)
+        img2 = img2.resize((500,100), Image.Resampling.LANCZOS)
         self.photoimg2 = ImageTk.PhotoImage(img2)
 
         f_lbl = Label(self.root, image = self.photoimg2)
@@ -43,7 +44,7 @@ class Face_Recognition_System:
 
         #Background Image
         img3 = Image.open(os.path.expanduser("~/Desktop/project/Attendance/Images/purple.jpeg"))
-        img3 = img3.resize((1530,710), Image.ANTIALIAS)
+        img3 = img3.resize((1530,710), Image.Resampling.LANCZOS)
         self.photoimg3 = ImageTk.PhotoImage(img3)
 
         bg_img = Label(self.root, image = self.photoimg3)
@@ -55,7 +56,7 @@ class Face_Recognition_System:
 
         #Student Button
         img4 = Image.open(os.path.expanduser("~/Desktop/project/Attendance/Images/StudentInfo.jpeg"))
-        img4 = img4.resize((220,220), Image.ANTIALIAS)
+        img4 = img4.resize((220,220), Image.Resampling.LANCZOS)
         self.photoimg4 = ImageTk.PhotoImage(img4)
 
         b1 = Button(bg_img, command = self.student_details, image = self.photoimg4, cursor = "hand2")
@@ -66,7 +67,7 @@ class Face_Recognition_System:
 
         #Detect Face Button
         img5 = Image.open(os.path.expanduser("~/Desktop/project/Attendance/Images/detect_face.jpeg"))
-        img5 = img5.resize((220,220), Image.ANTIALIAS)
+        img5 = img5.resize((220,220), Image.Resampling.LANCZOS)
         self.photoimg5 = ImageTk.PhotoImage(img5)
 
         b1 = Button(bg_img, command = self.face_data, image = self.photoimg5, cursor = "hand2")
@@ -77,7 +78,7 @@ class Face_Recognition_System:
 
         #Attendance Button
         img6 = Image.open(os.path.expanduser("~/Desktop/project/Attendance/Images/attendance.jpeg"))
-        img6 = img6.resize((220,220), Image.ANTIALIAS)
+        img6 = img6.resize((220,220), Image.Resampling.LANCZOS)
         self.photoimg6 = ImageTk.PhotoImage(img6)
 
         b1 = Button(bg_img, command = self.attendance_data, image = self.photoimg6, cursor = "hand2")
@@ -88,7 +89,7 @@ class Face_Recognition_System:
 
         #Train Button
         img7 = Image.open(os.path.expanduser("~/Desktop/project/Attendance/Images/train.jpeg"))
-        img7 = img7.resize((220,220), Image.ANTIALIAS)
+        img7 = img7.resize((220,220), Image.Resampling.LANCZOS)
         self.photoimg7 = ImageTk.PhotoImage(img7)
 
         b1 = Button(bg_img, image = self.photoimg7, cursor = "hand2", command = self.train_data)
@@ -97,20 +98,20 @@ class Face_Recognition_System:
         b1_1 = Button(bg_img, text = "Train Face", cursor = "hand2", command = self.train_data, font = ("Montserrat", 15, "bold"))
         b1_1.place(x = 200, y = 600, width = 220, height = 40)
 
-        #Photos Button
+        #Send Attendance Button
         img8 = Image.open(os.path.expanduser("~/Desktop/project/Attendance/Images/photos.jpeg"))
-        img8 = img8.resize((220,220), Image.ANTIALIAS)
+        img8 = img8.resize((220,220), Image.Resampling.LANCZOS)
         self.photoimg8 = ImageTk.PhotoImage(img8)
 
-        b1 = Button(bg_img, command = self.open_img, image = self.photoimg8, cursor = "hand2")
+        b1 = Button(bg_img, command = self.send_attendance, image = self.photoimg8, cursor = "hand2")
         b1.place(x = 500, y = 400, width = 220, height = 220)
 
-        b1_1 = Button(bg_img, command = self.open_img, text = "Photos", cursor = "hand2", font = ("Montserrat", 15, "bold"))
+        b1_1 = Button(bg_img, command = self.send_attendance, text = "Mail Attendance", cursor = "hand2", font = ("Montserrat", 15, "bold"))
         b1_1.place(x = 500, y = 600, width = 220, height = 40)
 
         #Exit Button
         img9 = Image.open(os.path.expanduser("~/Desktop/project/Attendance/Images/exit.jpeg"))
-        img9 = img9.resize((220,220), Image.ANTIALIAS)
+        img9 = img9.resize((220,220), Image.Resampling.LANCZOS)
         self.photoimg9 = ImageTk.PhotoImage(img9)
 
         b1 = Button(bg_img, command = self.iExit, image = self.photoimg9, cursor = "hand2")
@@ -128,10 +129,6 @@ class Face_Recognition_System:
         lbl = Label(title_lbl, font = ('times new roman', 14, 'bold'), background = 'white', foreground = 'blue')
         lbl.place(x = 0, y = 0, width = 110, height = 50)
         time()
-
-    def open_img(self):
-        os.startfile(os.path.expanduser("~/Desktop/project/Attendance/data"))
-        # os.startfile("data") for windows
 
     def iExit(self):
         self.iExit = tk.messagebox.askyesno("Exit", "Are you sure you want to exit?", parent = self.root)
@@ -161,6 +158,10 @@ class Face_Recognition_System:
     def attendance_data(self):
         self.new_window = Toplevel(self.root)
         self.app = Attendance(self.new_window)
+
+    def send_attendance(self):
+        self.new_window = Toplevel(self.root)
+        self.app = Mail(self.new_window)
 
 
 

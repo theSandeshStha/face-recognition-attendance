@@ -35,7 +35,7 @@ class Student:
 
         # First Image
         img = Image.open(os.path.expanduser("~/Desktop/project/Attendance/Images/college_logo.png"))
-        img = img.resize((500,100), Image.ANTIALIAS)
+        img = img.resize((500,100), Image.Resampling.LANCZOS)
         self.photoimg = ImageTk.PhotoImage(img)
 
         f_lbl = Label(self.root, image = self.photoimg)
@@ -43,7 +43,7 @@ class Student:
 
         #Second Image
         img1 = Image.open(os.path.expanduser("~/Desktop/project/Attendance/Images/college_logo.png"))
-        img1 = img1.resize((500,100), Image.ANTIALIAS)
+        img1 = img1.resize((500,100), Image.Resampling.LANCZOS)
         self.photoimg1 = ImageTk.PhotoImage(img1)
 
         f_lbl = Label(self.root, image = self.photoimg1)
@@ -51,7 +51,7 @@ class Student:
         
         #Third Image
         img2 = Image.open(os.path.expanduser("~/Desktop/project/Attendance/Images/college_logo.png"))
-        img2 = img2.resize((500,100), Image.ANTIALIAS)
+        img2 = img2.resize((500,100), Image.Resampling.LANCZOS)
         self.photoimg2 = ImageTk.PhotoImage(img2)
 
         f_lbl = Label(self.root, image = self.photoimg2)
@@ -60,7 +60,7 @@ class Student:
 
         #Background Image
         img3 = Image.open(os.path.expanduser("~/Desktop/project/Attendance/Images/purple.jpeg"))
-        img3 = img3.resize((1530,710), Image.ANTIALIAS)
+        img3 = img3.resize((1530,710), Image.Resampling.LANCZOS)
         self.photoimg3 = ImageTk.PhotoImage(img3)
 
         bg_img = Label(self.root, image = self.photoimg3)
@@ -79,7 +79,7 @@ class Student:
         Left_frame.place(x = 10, y = 10, width = 760, height = 580)
 
         img_left = Image.open(os.path.expanduser("~/Desktop/project/Attendance/Images/college_logo.png"))
-        img_left = img_left.resize((720,130), Image.ANTIALIAS)
+        img_left = img_left.resize((720,130), Image.Resampling.LANCZOS)
         self.photoimg_left = ImageTk.PhotoImage(img_left)
 
         f_lbl = Label(Left_frame, image = self.photoimg_left)
@@ -263,7 +263,7 @@ class Student:
         Right_frame.place(x = 780, y = 10, width = 670, height = 580)
 
         img_right = Image.open(os.path.expanduser("~/Desktop/project/Attendance/Images/college_logo.png"))
-        img_right = img_right.resize((720,130), Image.ANTIALIAS)
+        img_right = img_right.resize((720,130), Image.Resampling.LANCZOS)
         self.photoimg_right = ImageTk.PhotoImage(img_right)
 
         f_lbl = Label(Right_frame, image = self.photoimg_right)

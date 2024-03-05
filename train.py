@@ -20,7 +20,7 @@ class Train:
         title_lbl.place(x = 0, y = 0, width = 1530, height = 45)
 
         # img_top = Image.open(os.path.expanduser("~/Desktop/project/Attendance/Images/college_logo.png"))
-        # img_top = img_top.resize((1530, 325), Image.ANTIALIAS)
+        # img_top = img_top.resize((1530, 325), Image.Resampling.LANCZOS)
         # self.photoimg_top = ImageTk.PhotoImage(img_top)
 
         # f_lbl = Label(self.root, image = self.photoimg_top)
@@ -31,7 +31,7 @@ class Train:
         b1_1.place(x = 0, y = 380, width = 1530, height = 60)
 
         img_bottom = Image.open(os.path.expanduser("~/Desktop/project/Attendance/Images/college_logo.png"))
-        img_bottom = img_bottom.resize((1530, 325), Image.ANTIALIAS)
+        img_bottom = img_bottom.resize((1530, 325), Image.Resampling.LANCZOS)
         self.photoimg_bottom = ImageTk.PhotoImage(img_bottom)
 
         f_lbl = Label(self.root, image = self.photoimg_bottom)
