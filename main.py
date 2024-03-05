@@ -10,6 +10,7 @@ from train import Train
 from face_recognition import Face_Recognition
 from attendance import Attendance
 from mail import Mail
+from tkinter import messagebox
 
 class Face_Recognition_System:
     def __init__(self, root):
@@ -99,7 +100,7 @@ class Face_Recognition_System:
         b1_1.place(x = 200, y = 600, width = 220, height = 40)
 
         #Send Attendance Button
-        img8 = Image.open(os.path.expanduser("~/Desktop/project/Attendance/Images/photos.jpeg"))
+        img8 = Image.open(os.path.expanduser("~/Desktop/project/Attendance/Images/mail.jpeg"))
         img8 = img8.resize((220,220), Image.Resampling.LANCZOS)
         self.photoimg8 = ImageTk.PhotoImage(img8)
 
