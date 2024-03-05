@@ -9,10 +9,13 @@ class Mail:
 
     files=['attendance.csv']
 
+    # contacts = ['iamsandeshstha1@gmail.com', 'aapchutiye2@gmail.com']  for multiple emails
+
     msg = EmailMessage()
     msg['Subject'] = "The Attendance Report"
     msg['From'] = address
     msg['To'] = 'iamsandeshstha1@outlook.com'
+    # msg['To'] = ','.join(contacts) for multiple emails
     msg.set_content("The Attendance Report")
 
     for file in files:
