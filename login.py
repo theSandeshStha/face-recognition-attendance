@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 import os
 from main import Face_Recognition_System
+from PIL import Image, ImageTk
 
 root = Tk()
 root.title("Login")
@@ -9,7 +10,9 @@ root.geometry('925x500+300+200')
 root.configure(bg = '#fff')
 root.resizable(False, False)
 
-img = PhotoImage(file='login.png')
+image = Image.open(os.path.expanduser("~/Desktop/project/Attendance/Images/login.png"))
+rezied_image = image.resize((300,300), Image.Resampling.LANCZOS)
+img = ImageTk.PhotoImage(rezied_image)
 Label(root, image=img, bg='white').place(x=50, y=50)
 
 frame = Frame(root, width=350, height=350, bg="white")
